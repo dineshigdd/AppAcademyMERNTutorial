@@ -2,6 +2,9 @@
   "name": "appacademyex1",
   "version": "1.0.0",
   "description": "this is a test project",
+  "engines": { 
+    "node": "v12.16.1"
+  },
   "main": "app.js",
   "scripts": {
     "server:debug": "nodemon --inspect app.js",
