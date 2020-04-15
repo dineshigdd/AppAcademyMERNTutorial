@@ -1,6 +1,10 @@
 {
   "name": "appacademyex1",
   "version": "1.0.0",
+  "engines": { 
+    "node": "12.16.x",
+    "npm:":"6.x"
+  },
   "description": "this is a test project",  
   "main": "app.js",
   "scripts": {
@@ -9,8 +13,9 @@
     "start": "nodemon app.js",
     "frontend-install": "npm install --prefix frontend",
     "frontend": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run frontend\""
-    
+    "dev": "concurrently \"npm run server\" \"npm run frontend\"",
+    // This tells npm not to install everything, instead of only the dev dependencies, and to run our install and build commands on push
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "",
   "license": "ISC",
@@ -24,10 +29,7 @@
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "validator": "^12.2.0"
-  },
-  "engines": { 
-    "node": "v12.16.1"
-  },
+  },  
   "devDependencies": {
     "nodeman": "^1.1.2",
     "nodemon": "^2.0.2",
