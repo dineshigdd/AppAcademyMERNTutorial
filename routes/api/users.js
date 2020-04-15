@@ -8,6 +8,7 @@ const validateLoginInput = require('../../validation/login');
 const keys = require('../../config/keys');
 const passport = require('passport');
 
+router.get("/test", (req, res) => res.json({ msg: "This is the users route" })); //for testing
 
 router.post('/register', (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
