@@ -13,12 +13,12 @@ router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 router.post('/register', (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
   // Check to make sure nobody has already registered with a duplicate email
-
+  
   if (!isValid) {
     return res.status(400).json(errors);
   }
   
-  User.findOne({ email: req.body.handle })
+  User.findOne({ handle: req.body.handle })
     .then(user => {
       if (user) {
         // Throw a 400 error if the email address already exists
@@ -64,10 +64,10 @@ router.post('/login', (req,res) => {
     return res.status(400).json(errors);
   }
 
-   const handle = req.body.handle;
+   const email = req.body.email;
    const password = req.body.password;
-
-    User.findOne( { handle } )
+   console.log("handle:"+ email)
+    User.findOne( { email } )
         .then(user => {
           if( !user ){
             errors.handle = "This user does not exist";
